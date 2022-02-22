@@ -1,0 +1,34 @@
+# Relative path to the working directory is used for all paths except for executables.
+
+# Run configuration.
+runConvertDocxToPdfaStep = true
+runSignPdfaStep = true
+runValidateSignatureStep = true
+runValidatePdfaStep = true
+runGenerateXHochschuleStep = true
+runValidateXHochschuleStep = true
+
+# PDF/A configuration.
+signedPdfaFileName = "zeugnis_pdfa_signed.pdf"
+generatedPdfaFile = "zeugnis_pdfa.pdf"
+docxInputFile = "files/word.docx"
+deleteGeneratedUnsignedPdfaFile = true
+
+# XHochschule configuration.
+xhochschuleSchema = "files/xhochschule/0.7/xhochschule.xsd"
+xhochschuleDocumentLanguageCode = "de"
+hochschulabschlusszeugnisTemplateFile = "files/hochschulabschlusszeugnis_template.xml"
+
+
+# Configuration for data regarding signing of the PDF/A files.
+caCertificatesDirectory = "files/certificates/ca/"
+signingCertificateFile = "files/certificates/cert.pem"
+keystoreFile = "files/certificates/keystore.p12"
+keystorePassword = "password123"
+
+
+# Misc configuration.
+# Absolute path is used for executables (enter the command that can be called from the command line)
+verapdfExecutable = "/Users/UserName/verapdf/verapdf"
+
+
