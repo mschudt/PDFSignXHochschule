@@ -31,7 +31,7 @@ Das Programm kann mit dem inkludierten Skript `export_jar.sh` als ausführbare J
 # Aufrufen des Progamms
 Das Programm kann mit folgendem Befehl ausgeführt werden:
 
-`java -jar PDFSignXHochschule.jar exportDir=student_123456`
+`java -jar PDFSignXHochschule.jar exportDir=student_123456 inputFile=files/zeugnis.docx`
 
 Die Verzeichnisse, die als Argument übergeben werden, sind relative Pfade.
 

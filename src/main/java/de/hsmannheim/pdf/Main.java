@@ -30,51 +30,59 @@ public class Main {
 
     public static void main(String[] args) {
         new Main().doMain(args);
-    }
 
-    private void printUsage() {
-        System.err.println("Usage: java -jar PDFSignXHochschule.jar exportDir=student_123456");
     }
 
     public void doMain(String[] args) {
-        Stream<String> argsStream = Arrays.stream(args);
+        // XHochschule configuration.
+        HochschulabschlusszeugnisData hochschulabschlusszeugnisData = new HochschulabschlusszeugnisData();
+        String[] xhochschuleElementTypes = {"hochschulabschlusszeugnis"};
 
-        Optional<String> exportDirOption = argsStream.filter((arg) -> arg.startsWith("exportDir=")).findFirst();
+        // Setup directories.
+        String workingDir = System.getProperty("user.dir") + File.separator;
+        String filesDir = workingDir + File.separator + "files" + File.separator;
+        String configDir = filesDir + File.separator + "config" + File.separator;
+
+        // Read in configuration.
+        Toml tomlGeneralConfig = new Toml().read(new File(configDir + "general_config.toml"));
+
+        // Parse arguments.
+        Optional<String> exportDirOption = Arrays.stream(args).filter((arg) -> arg.startsWith("exportDir=")).findFirst();
+        Optional<String> inputFileOption = Arrays.stream(args).filter((arg) -> arg.startsWith("inputFile=")).findFirst();
 
         if (exportDirOption.isEmpty()) {
             printUsage();
             System.exit(1);
         }
 
-
-        String workingDir = System.getProperty("user.dir") + File.separator;
-        String filesDir = workingDir + File.separator + "files" + File.separator;
-        String configDir = filesDir + File.separator + "config" + File.separator;
         String exportDir = workingDir + exportDirOption.get().split("=")[1] + File.separator;
 
-        Toml tomlGeneralConfig = new Toml().read(new File(configDir + "general_config.toml"));
+        String generatedPdfaFile = exportDir + tomlGeneralConfig.getString("generatedPdfaFile");
 
-        boolean runConvertDocxToPdfaStep = tomlGeneralConfig.getBoolean("runConvertDocxToPdfaStep");
+        boolean runConvertToPdfaStep = tomlGeneralConfig.getBoolean("runConvertToPdfaStep");
         boolean runSignPdfaStep = tomlGeneralConfig.getBoolean("runSignPdfaStep");
         boolean runValidateSignatureStep = tomlGeneralConfig.getBoolean("runValidateSignatureStep");
         boolean runValidatePdfaStep = tomlGeneralConfig.getBoolean("runValidatePdfaStep");
         boolean runGenerateXHochschuleStep = tomlGeneralConfig.getBoolean("runGenerateXHochschuleStep");
         boolean runValidateXHochschuleStep = tomlGeneralConfig.getBoolean("runValidateXHochschuleStep");
 
+        if (runConvertToPdfaStep && inputFileOption.isEmpty()) {
+            printUsage();
+            System.exit(1);
+        }
 
-        String generatedPdfaFile = exportDir + tomlGeneralConfig.getString("generatedPdfaFile");
-        String docxInputFile = workingDir + tomlGeneralConfig.getString("docxInputFile");
+        if (runConvertToPdfaStep) {
+            String docxOrPdfInputFile = workingDir + inputFileOption.get().split("=")[1];
 
-        if (runConvertDocxToPdfaStep) {
             // Convert DOCX to PDF/A-2B.
             ToPDFAConverter toPdfaConverter = new ToPDFAConverter();
 
-            boolean success = toPdfaConverter.fileToPdfa(docxInputFile, generatedPdfaFile);
+            boolean success = toPdfaConverter.fileToPdfa(docxOrPdfInputFile, generatedPdfaFile);
 
             if (success) {
-                System.out.println("✅ Successfully converted DOCX file " + docxInputFile + " to PDF/A-2B file at " + generatedPdfaFile);
+                System.out.println("✅ Successfully converted file " + docxOrPdfInputFile + " to PDF/A-2B file at " + generatedPdfaFile);
             } else {
-                System.out.println("❌ Error while converting DOCX file " + docxInputFile + " to PDF/A-2B file at " + generatedPdfaFile);
+                System.out.println("❌ Error while converting file " + docxOrPdfInputFile + " to PDF/A-2B file at " + generatedPdfaFile);
                 System.exit(1);
             }
         }
@@ -151,16 +159,12 @@ public class Main {
             }
         }
 
-        String[] xhochschuleElementTypes = {"hochschulabschlusszeugnis",
-        };
-
         if (runGenerateXHochschuleStep) {
             for (String type : xhochschuleElementTypes) {
                 String hochschulabschlusszeugnisTemplateFile = tomlGeneralConfig.getString("hochschulabschlusszeugnisTemplateFile");
 
                 XHochschuleGenerator xHochschuleGenerator = new XHochschuleGenerator(type, hochschulabschlusszeugnisTemplateFile);
 
-                HochschulabschlusszeugnisData hochschulabschlusszeugnisData = new HochschulabschlusszeugnisData();
 
                 String generatedXmlFilePath = exportDir + type + ".xml";
                 String xhochschuleLanguageCode = tomlGeneralConfig.getString("xhochschuleDocumentLanguageCode");
@@ -200,6 +204,10 @@ public class Main {
         }
 
 
+    }
+
+    private void printUsage() {
+        System.err.println("Usage: java -jar PDFSignXHochschule.jar exportDir=student_123456 inputFile=zeugnis.docx/pdf");
     }
 
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="http://xhochschule.de/def/xhochschule/0.7/xsd/xhochschule.xsd" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?><xhs:hochschulabschlusszeugnis xmlns:xhs="http://xhochschule.de/def/xhochschule/0.7/xsd" xmlns:business="http://www.w3.org/ns/corevocabulary/business" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:clm54217="urn:un:unece:uncefact:codelist:specification:54217:2001" xmlns:clm5639="urn:un:unece:uncefact:codelist:specification:5639:1988" xmlns:clm66411="urn:un:unece:uncefact:codelist:specification:66411:2001" xmlns:clmIANAMIMEMediaType="urn:un:unece:uncefact:codelist:specification:IANAMIMEMediaType:2003" xmlns:cred="http://data.europa.eu/europass/model/credentials/w3c#" xmlns:cva="http://www.w3.org/ns/corevocabulary/AggregateComponents" xmlns:cvb="http://www.w3.org/ns/corevocabulary/BasicComponents" xmlns:dinspec91379="urn:xoev-de:kosit:xoev:datentyp:din-spec-91379_2019-03" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:elmo="https://github.com/emrex-eu/elmo-schemas/tree/v1" xmlns:eup="http://data.europa.eu/snb" xmlns:europass="http://europass.cedefop.europa.eu/Europass/V2.0" xmlns:ewp="https://github.com/erasmus-without-paper/ewp-specs-architecture/blob/stable-v1/common-types.xsd" xmlns:ewpAddress="https://github.com/erasmus-without-paper/ewp-specs-types-address/tree/stable-v1" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:location="http://www.w3.org/ns/corevocabulary/location" xmlns:person="http://www.w3.org/ns/corevocabulary/person" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xbd="http://xbildung.de/def/xbildung/0.7/xsd" xmlns:xiaa="http://www.osci.de/xinneres/auslandsanschrift/3" xmlns:xicgvz="http://www.osci.de/xinneres/codes/gemeindeverzeichnis/2" xmlns:xima="http://www.osci.de/xinneres/meldeanschrift/3" xmlns:xoev-code="http://xoev.de/schemata/code/1_0" xmlns:xoev-lc="http://xoev.de/latinchars/1_1/datatypes" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xhochschule.de/def/xhochschule/0.7/xsd http://xhochschule.de/def/xhochschule/0.7/xsd/xhochschule.xsd">
+    <xbd:id>
+        <xbd:id>zeugnis_typ_1</xbd:id>
+        <xbd:beschreibung xml:lang="de">Technische ID, z.B. zur Identifikation eines bestimmten Nachweis-Typs innerhalb eines bestimmten CaMS</xbd:beschreibung>
+    </xbd:id>
+    <xbd:artDesNachweises listURI="urn:xbildung-de:xbildung:codeliste:artdesnachweises" listVersionID="0.7">
+        <code>http://www.xbildung.de/def/xbildung/0.7/code/ArtDesNachweises/Hochschulabschlusszeugnis</code>
+    </xbd:artDesNachweises>
+    <xbd:ausstellungsdatum>2022-02-24</xbd:ausstellungsdatum>
+    <xbd:gueltigkeitszeitraum>
+        <xbd:beginn>2022-02-24</xbd:beginn>
+    </xbd:gueltigkeitszeitraum>
+    <xbd:einsatzzweck>Zum Nachweis der Hochschul-Ausbildung</xbd:einsatzzweck>
+    <xbd:titel xml:lang="de">Hochschulabschlusszeugnis</xbd:titel>
+    <xhs:studierender>
+        <xbd:id>EM_1720001</xbd:id>
+        <xbd:nameNatuerlichePerson>
+            <xbd:familienname>
+                <xbd:name>Mustermann</xbd:name>
+            </xbd:familienname>
+            <xbd:geburtsname>
+                <xbd:name>Gabler</xbd:name>
+            </xbd:geburtsname>
+            <xbd:vorname>
+                <xbd:name>Max</xbd:name>
+            </xbd:vorname>
+            <xbd:anrede>Herr</xbd:anrede>
+        </xbd:nameNatuerlichePerson>
+        <xbd:geburt>
+            <xbd:datum>1990-01-01</xbd:datum>
+            <xbd:geburtsort>
+                <xbd:ort>Mannheim</xbd:ort>
+            </xbd:geburtsort>
+        </xbd:geburt>
+        <xbd:anschrift>
+            <xbd:strasse>Beispielstraße</xbd:strasse>
+            <xbd:hausnummer>123</xbd:hausnummer>
+            <xbd:postleitzahl>68163</xbd:postleitzahl>
+            <xbd:ort>Mannheim</xbd:ort>
+        </xbd:anschrift>
+        <xbd:identifikationsnummer>
+            <xbd:id>1720001</xbd:id>
+            <xbd:beschreibung xml:lang="de">Matrikelnummer der studierenden Person</xbd:beschreibung>
+        </xbd:identifikationsnummer>
+        <xhs:immatrikulation>
+            <xhs:matrikelnummer>1720001</xhs:matrikelnummer>
+            <xhs:hochschule>
+                <code>http://xhochschule.de/def/destatis/WS20/code/hochschulsignatur/1360</code>
+            </xhs:hochschule>
+        </xhs:immatrikulation>
+        <xhs:hochschulsemester>9</xhs:hochschulsemester>
+        <xhs:ersteinschreibung>2017-09-01</xhs:ersteinschreibung>
+    </xhs:studierender>
+    <xhs:ausstellendeHochschule>
+        <xbd:name>
+            <xbd:name xml:lang="de">Hochschule Mannheim</xbd:name>
+        </xbd:name>
+        <xbd:anschrift>
+            <xbd:postfach>Postfach 15 11 50</xbd:postfach>
+            <xbd:postleitzahl>68163</xbd:postleitzahl>
+            <xbd:ort>Mannheim</xbd:ort>
+        </xbd:anschrift>
+        <xbd:artDerBildungseinrichtung listURI="urn:xbildung-de:xbildung:codeliste:artderbildungseinrichtunghochschule" listVersionID="0.7">
+            <code>http://www.xbildung.de/def/xbildung/0.7/code/ArtDerBildungseinrichtung/6</code>
+        </xbd:artDerBildungseinrichtung>
+        <xbd:artDerTraegerschaft listURI="urn:xbildung-de:xbildung:codeliste:artdertraegerschaft" listVersionID="0.7">
+            <code>http://xbildung.de/def/xbildung/0.7/code/ArtDerTraegerschaft/1</code>
+        </xbd:artDerTraegerschaft>
+        <xhs:hochschulIdentifikation>ID001</xhs:hochschulIdentifikation>
+        <xhs:hochschulsignatur listURI="urn:xhochschule-de:destatis:codeliste:hochschulsignatur" listVersionID="WS20">
+            <code>http://xhochschule.de/def/destatis/WS20/code/hochschulsignatur/6780</code>
+        </xhs:hochschulsignatur>
+    </xhs:ausstellendeHochschule>
+    <xhs:diplomaSupplementVerweis>DS_1720001</xhs:diplomaSupplementVerweis>
+    <xhs:transcriptOfRecordVerweis>TOR_1720001</xhs:transcriptOfRecordVerweis>
+    <xhs:studiengang>
+        <xhs:identifikation>
+            <xbd:id>Informatik_IB</xbd:id>
+        </xhs:identifikation>
+        <xhs:name xml:lang="de">B. Sc. Informatik</xhs:name>
+        <xhs:studienfach>
+            <xhs:angestrebterAbschluss listURI="urn:xbildung-de:xbildung:codeliste:artdesabschlusses" listVersionID="0.7">
+                <code>http://xbildung.de/def/xbildung/0.7/code/ArtDesAbschlusses/Bachelor</code>
+            </xhs:angestrebterAbschluss>
+            <xhs:schluesselDESTATIS listURI="urn:xhochschule-de:destatis:codeliste:faecherschluessel" listVersionID="WS20">
+                <code>http://xhochschule.de/def/destatis/WS20/code/faecherschluessel/079</code>
+            </xhs:schluesselDESTATIS>
+        </xhs:studienfach>
+        <xhs:studienbereichCode listURI="urn:xhochschule-de:destatis:codeliste:studienbereich" listVersionID="WS20">
+            <code>http://xhochschule.de/def/destatis/WS20/code/studienbereich/54</code>
+        </xhs:studienbereichCode>
+        <xhs:studienbereichBezeichnung xml:lang="de">Informatik</xhs:studienbereichBezeichnung>
+    </xhs:studiengang>
+    <xhs:benotung>
+        <xhs:gesamtnote>1,0</xhs:gesamtnote>
+        <xhs:lateinischeEhrenbezeichnung>
+            <code>http://xhochschule.de/def/xhochschule/0.7/code/lateinischeehrenbezeichnung/cum_laude</code>
+        </xhs:lateinischeEhrenbezeichnung>
+    </xhs:benotung>
+    <xhs:bezeichnung xml:lang="de">Zeugnis ...</xhs:bezeichnung>
+    <xhs:zugangsberechtigungWeiterfuehrendesStudiumBezeichnung xml:lang="en-US">Master</xhs:zugangsberechtigungWeiterfuehrendesStudiumBezeichnung>
+    <xhs:zugangsberechtigungWeiterfuehrendesStudiumCode listURI="urn:xbildung-de:isced:codeliste:2011level" listVersionID="listVersionID11">
+        <code>746</code>
+    </xhs:zugangsberechtigungWeiterfuehrendesStudiumCode>
+</xhs:hochschulabschlusszeugnis>
